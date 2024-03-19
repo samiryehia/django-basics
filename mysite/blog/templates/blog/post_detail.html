@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <style>
+      body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.post-title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.post-meta {
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #666;
+}
+
+.post-body {
+    margin-top: 20px;
+}
+
+/* Add some spacing to paragraphs inside the post body */
+.post-body p {
+    margin-bottom: 20px;
+}
+
+/* Style for images inside the post, if any */
+.post-body img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Small screen adjustments */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+}
+
+    </style>
+  </head>
+<body>
+
+{% block content %}
+<article class="container">
+  <h2 class="post-title"><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+  <p class="post-meta">Posted by {{ post.author }} on {{ post.created_on }}</p>
+  <div class="post-body">{{ post.text|linebreaks }}</div>
+</article>
+{% endblock %}
+</body>
+</html>
